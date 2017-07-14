@@ -45,10 +45,16 @@ def run_bot(r):
 		subreddit = r.subreddit('GameJamMonthly')
 		for submission in subreddit.hot():
 			if submission.stickied:
-				if submission.title == calendar.month_name[datetime.now().month] + " Voting Thread":
-					submission.comment_sort = 'best'
-					submission.comments.replace_more(limit=0)
-					currentTheme = submission.comments[0].body
+				if datetime.now().month == 1:
+					if submission.title == "December " + (datetime.now().year - 1) + " Voting Thread":
+						submission.comment_sort = 'best'
+						submission.comments.replace_more(limit=0)
+						currentTheme = submission.comments[0].body
+				else:
+					if submission.title == calendar.month_name[datetime.now().month] + " " + datetime.now().year + " Voting Thread":
+						submission.comment_sort = 'best'
+						submission.comments.replace_more(limit=0)
+						currentTheme = submission.comments[0].body
 		print "Theme picked!"
 		
 		#unsticky voting thread and old jam thread
@@ -77,8 +83,12 @@ def run_bot(r):
 		
 		#write contest-mode post for theme voting.
 		print "Creating post..."
-		postid = r.subreddit("GameJamMonthly").submit(title = calendar.month_name[datetime.now().month + 1] + " Voting Thread", 
-							 selftext="Hello everyone, welcome to the voting thread. This thread is for next month's jam. Vote for your favourite!")
+		if datetime.now().month == 12:
+			postid = r.subreddit("GameJamMonthly").submit(title = "January " + (datetime.now().year + 1) + " Voting Thread", 
+								 selftext="Hello everyone, welcome to the voting thread. This thread is for next month's jam. Vote for your favourite!")
+		else:
+			postid = r.subreddit("GameJamMonthly").submit(title = calendar.month_name[datetime.now().month + 1] + " " + datetime.now().year + " Voting Thread", 
+								 selftext="Hello everyone, welcome to the voting thread. This thread is for next month's jam. Vote for your favourite!")
 		
 		#set contest mode true
 		post = r.submission(id=postid)
