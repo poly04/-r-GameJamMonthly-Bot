@@ -60,7 +60,7 @@ def run_bot(r):
 		
 		#write post for theme
 		print "Writing theme post"
-		postid = subreddit.submit(title=calendar.month_name[datetime.now().month] + " " + currentTheme,
+		postid = subreddit.submit(title=calendar.month_name[datetime.now().month] + " " + datetime.now().year + " " + currentTheme,
 								  selftext="Hello everyone.\n\nThis month has a theme!  \nHave fun!")
 		post = r.submission(id=postid)
 		post.mod.sticky()
