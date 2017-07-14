@@ -10,5 +10,7 @@ Dependencies:
     -selenium
   
 You'll also need Microsoft's Edge browser, and a driver that lets selenium open it.
+
+NOTE: If you come across any bugs, you can PM /u/TheFanne on Reddit.
  
 
