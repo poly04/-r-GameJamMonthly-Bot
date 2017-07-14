@@ -37,7 +37,7 @@ def remove_lastChar(string):
 	return string[:-2]
 				
 def run_bot(r):
-	if datetime.now().day == 13: #day set to current day for testing. Set to 1 in release.
+	if datetime.now().day == 1: #day set to current day for testing. Set to 1 in release.
 		print "It's the first, updating Game Jam..."
 		
 		#pick theme based on the voting thread
